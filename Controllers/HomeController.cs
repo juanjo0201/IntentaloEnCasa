@@ -8,12 +8,8 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
+        // El controlador toma los datos del modelo y se los pasa a la vista
+        return View(Actividad.Todas);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

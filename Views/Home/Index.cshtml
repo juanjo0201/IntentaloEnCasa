@@ -1,8 +1,122 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<Actividad>
+@{
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section id="Inicio">
+    <h2>Bienvenido a Intentalo en casa</h2>
+
+    <img src="~/img/portada.jpg" alt="Go-karts en pista realista" class="imagen_destacada" />
+
+    <article>
+        <h3>Descubre la emoción de vivir al límite</h3>
+        <p>
+            En Intentalo en casa, te ofrecemos experiencias únicas y
+            emocionantes que te harán sentir vivo. Desde actividades extremas
+            hasta desafíos que pondrán a prueba tus límites, tenemos algo para
+            todos los aventureros.
+        </p>
+    </article>
+</section>
+
+<section id="actividades" class="mt-5">
+    <h3>Actividades</h3>
+    <ul>
+        @foreach (var actividad in Model)
+        {
+            <li>@actividad.Nombre</li>
+        }
+    </ul>
+</section>
+
+<section id="galeria" class="mt-5">
+    <h3>Galería</h3>
+    <article>
+        <h3>Fotos</h3>
+        <p>Algunos momentos capturados en nuestras actividades:</p>
+
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card">
+                    <img src="https://mitsubishi-motors.com.co/blog/wp-content/uploads/2019/02/Canopy-min.jpg"
+                         class="card-img-top imagen-galeria" alt="Canopy en la selva" />
+                    <div class="card-body">
+                        <p class="card-text">Canopy en la selva</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/85/93/ef/colgantes.jpg?w=1200&amp;h=1200&amp;s=1"
+                         class="card-img-top imagen-galeria" alt="Juegos a las alturas" />
+                    <div class="card-body">
+                        <p class="card-text">Juegos a las alturas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card">
+                    <img src="https://imagenes2.eltiempo.com/files/og_thumbnail/uploads/2017/12/01/5a21da82eebb6.jpeg"
+                         class="card-img-top imagen-galeria" alt="Bungee jumping en el rio" />
+                    <div class="card-body">
+                        <p class="card-text">Bungee jumping en el río</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+<section id="multimedia" class="mt-5">
+    <h3>Multimedia</h3>
+    <p>
+        Disfruta de nuestro video y banda sonora, que despierta adrenalina de
+        solo escuchar la intro!
+    </p>
+
+    <video controls width="560">
+        <source src="~/media/video.mp4" type="video/mp4" />
+        Tu navegador no soporta la reproducción de videos.
+    </video>
+
+    <br /><br />
+
+    <audio controls>
+        <source src="~/media/banda-sonora.mp3" type="audio/mpeg" />
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+</section>
+
+<section id="precios" class="mt-5">
+    <h3>Precios</h3>
+    <table class="tabla-precios">
+        <caption>Precios por actividad y por persona</caption>
+        <thead>
+            <tr>
+                <th>Actividad</th>
+                <th>Precio</th>
+                <th>Incluye equipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var actividad in Model)
+            {
+                <tr>
+                    <td>@actividad.Nombre</td>
+                    <td>$@actividad.Precio</td>
+                    <td>@(actividad.IncluyeEquipo ? "Sí" : "No")</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Todos los precios incluyen impuestos</td>
+            </tr>
+            <tr>
+                <td colspan="3">Los precios pueden variar según la temporada</td>
+            </tr>
+        </tfoot>
+    </table>
+</section>

@@ -1,0 +1,14 @@
+@model Cita
+@{
+    ViewData["Title"] = "Cita confirmada";
+}
+
+<div class="alert alert-success">
+    <h2 class="mb-3">¡Cita agendada, @Model.Nombre!</h2>
+    <p class="mb-1">Actividad: @Model.NombreActividad()</p>
+    <p class="mb-1">Fecha: @Model.Fecha.ToString("dd/MM/yyyy")</p>
+    <p class="fw-bold mb-0">Precio: $@Model.Precio()</p>
+</div>
+
+<a asp-controller="Citas" asp-action="Index" class="btn btn-outline-danger">Agendar otra</a>
+<a asp-controller="Citas" asp-action="Lista" class="btn btn-danger">Ver citas agendadas</a>

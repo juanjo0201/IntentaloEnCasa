@@ -12,20 +12,23 @@ public class Cita
 
     [Required(ErrorMessage = "El correo es obligatorio")]
     [EmailAddress(ErrorMessage = "Escribe un correo válido")]
+    [Display(Name = "Correo electrónico")]
     public string Correo { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "El teléfono es obligatorio")]
     [Phone(ErrorMessage = "Escribe un teléfono válido")]
+    [Display(Name = "Teléfono")]
     public string Telefono { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "La fecha es obligatoria")]
     [DataType(DataType.Date)]
+    [Display(Name = "Fecha de la cita")]
     public DateTime Fecha { get; set; } = DateTime.Today;
 
     [Required(ErrorMessage = "Selecciona una actividad")]
+    [Display(Name = "Actividad")]
     public string ActividadClave { get; set; } = string.Empty;
 
-    // Igual que en JS: métodos que consultan el catálogo
     public string NombreActividad() =>
         Actividad.Todas.FirstOrDefault(a => a.Clave == ActividadClave)?.Nombre ?? "Sin actividad";
 

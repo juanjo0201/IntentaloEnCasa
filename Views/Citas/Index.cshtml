@@ -1,0 +1,54 @@
+@model Cita
+@{
+    ViewData["Title"] = "Agendar cita";
+}
+
+<section id="contacto">
+    <h3>Agenda tu cita</h3>
+
+    <form asp-controller="Citas" asp-action="Index" method="post" class="formulario-cita">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="Nombre"></label>
+            <input asp-for="Nombre" class="form-control" placeholder="Ingresa tu nombre" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Correo"></label>
+            <input asp-for="Correo" class="form-control" placeholder="Ingresa tu correo electrónico" />
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Telefono"></label>
+            <input asp-for="Telefono" class="form-control" placeholder="Ingresa tu número de teléfono" />
+            <span asp-validation-for="Telefono" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Fecha"></label>
+            <input asp-for="Fecha" class="form-control" />
+            <span asp-validation-for="Fecha" class="text-danger"></span>
+        </div>
+
+        <p class="mb-1 fw-bold">Actividad:</p>
+        @foreach (var actividad in Actividad.Todas)
+        {
+            <div class="opcion_actividad">
+                <input type="radio" asp-for="ActividadClave" value="@actividad.Clave" id="@actividad.Clave" />
+                <label for="@actividad.Clave">@actividad.Nombre - $@actividad.Precio</label>
+            </div>
+        }
+        <span asp-validation-for="ActividadClave" class="text-danger"></span>
+
+        <div>
+            <button type="submit" class="btn btn-danger mt-3 px-4 py-2">Agendar cita</button>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

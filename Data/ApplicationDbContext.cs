@@ -11,4 +11,6 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<Actividad> Actividades { get; set; } = null!;
+
+    public DbSet<Cita> Citas { get; set; } = null!;
 }

@@ -25,7 +25,8 @@ public class Cita
     [Display(Name = "Fecha de la cita")]
     public DateTime Fecha { get; set; } = DateTime.Today;
 
-    [Required(ErrorMessage = "Selecciona una actividad")]
     [Display(Name = "Actividad")]
-    public string ActividadClave { get; set; } = string.Empty;
-}   
+    public int ActividadId { get; set; }
+
+    public Actividad? Actividad { get; set; }
+}

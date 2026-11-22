@@ -15,4 +15,6 @@ public class Actividad
 
     [Display(Name = "Incluye equipo")]
     public bool IncluyeEquipo { get; set; }
+
+    public ICollection<Cita> Citas { get; set; } = new List<Cita>();
 }

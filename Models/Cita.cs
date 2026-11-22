@@ -28,10 +28,4 @@ public class Cita
     [Required(ErrorMessage = "Selecciona una actividad")]
     [Display(Name = "Actividad")]
     public string ActividadClave { get; set; } = string.Empty;
-
-    public string NombreActividad() =>
-        Actividad.Todas.FirstOrDefault(a => a.Clave == ActividadClave)?.Nombre ?? "Sin actividad";
-
-    public decimal Precio() =>
-        Actividad.Todas.FirstOrDefault(a => a.Clave == ActividadClave)?.Precio ?? 0;
-}
+}   

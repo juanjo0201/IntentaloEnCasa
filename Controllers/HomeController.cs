@@ -1,15 +1,23 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using IntentaloEnCasa.Data;
 using IntentaloEnCasa.Models;
 
 namespace IntentaloEnCasa.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly ApplicationDbContext _context;
+
+    public HomeController(ApplicationDbContext context)
     {
-        // El controlador toma los datos del modelo y se los pasa a la vista
-        return View(Actividad.Todas);
+        _context = context;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        return View(await _context.Actividades.ToListAsync());
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

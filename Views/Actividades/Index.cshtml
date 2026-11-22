@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                Citas
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
@@ -27,6 +30,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @item.Citas.Count
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>

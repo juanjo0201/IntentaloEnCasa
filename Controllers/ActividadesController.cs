@@ -22,7 +22,7 @@ namespace IntentaloEnCasa.Controllers
         // GET: Actividades
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Actividades.ToListAsync());
+            return View(await _context.Actividades.Include(a => a.Citas).ToListAsync());
         }
 
         // GET: Actividades/Details/5
@@ -34,6 +34,7 @@ namespace IntentaloEnCasa.Controllers
             }
 
             var actividad = await _context.Actividades
+                .Include(a => a.Citas)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (actividad == null)
             {
